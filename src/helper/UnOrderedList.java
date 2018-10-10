@@ -1,11 +1,11 @@
 package helper;
 
-public class UnOrderedList {
+public class UnOrderedList<G> {
 	Node head = null;
 	Node tail = null;
 	int count = 0;
 
-	public void add(Object data) {
+	public void add(G data) {
 		Node n = new Node(data);
 
 		if (head == null) {
@@ -20,7 +20,7 @@ public class UnOrderedList {
 		return;
 	}
 
-	public void append(Object data) {
+	public void append(G data) {
 		Node n = new Node(data);
 
 		if (head == null) {
@@ -35,12 +35,12 @@ public class UnOrderedList {
 		return;
 	}
 
-	public void remove(Object data) {
+	public void remove(G data) {
 		if (head == null) {
 			System.out.println("no data");
 			return;
 		}
-		if (head.data == data) {
+		if (head.data.equals(data)) {
 			head = head.next;
 			count--;
 			return;
@@ -49,7 +49,7 @@ public class UnOrderedList {
 		int i;
 
 		for (i = 1; i <= count; i++) {
-			if (temp.data == data) {
+			if (temp.data.equals(data)) {
 				if (i == count) {
 					break;
 				}
@@ -76,10 +76,10 @@ public class UnOrderedList {
 		return;
 	}
 
-	public boolean search(Object data) {
+	public boolean search(G data) {
 		Node temp = head;
 		for (int i = 0; i < count; i++) {
-			if (temp.data == data) {
+			if (temp.data.equals((Object) data)) {
 				return true;
 			}
 			temp = temp.next;
@@ -106,7 +106,7 @@ public class UnOrderedList {
 		}
 	}
 
-	public int indexOf(Object data) {
+	public int indexOf(G data) {
 		Node temp = head;
 		for (int i = 0; i < count; i++) {
 			if (temp.data == data) {
@@ -117,7 +117,7 @@ public class UnOrderedList {
 		return -1;
 	}
 
-	public void insert(int p, Object data) {
+	public void insert(int p, G data) {
 		if (p >= 0 && p < count) {
 			Node n = new Node(data);
 			if (p == 0) {
@@ -149,7 +149,7 @@ public class UnOrderedList {
 		}
 	}
 
-	public Object pop() {
+	public G pop() {
 		Node temp = head;
 		Node data = tail;
 		for (int i = 1; i < count - 1; i++) {
@@ -158,20 +158,20 @@ public class UnOrderedList {
 		temp.next = null;
 		tail = temp;
 		count--;
-		return data.data;
+		return (G) data.data;
 	}
 
-	public Object pop(int n) {
-		Object data;
+	public G pop(int n) {
+		G data;
 		if (n == 0) {
-			data = head.data;
+			data = (G) head.data;
 			head = head.next;
 			count--;
 			return data;
 		}
 		Node temp = head;
 		if (n == count - 1) {
-			data = tail.data;
+			data = (G) tail.data;
 			for (int i = 1; i < count - 1; i++) {
 				temp = temp.next;
 			}
@@ -189,9 +189,19 @@ public class UnOrderedList {
 			temp3 = temp3.next;
 
 		}
-		data = temp2.data;
+		data = (G) temp2.data;
 		temp.next = temp3;
 		count--;
 		return data;
+	}
+
+	public G getData() {
+		String st = "";
+		Node temp = head;
+		for (int i = 0; i < count; i++) {
+			st = st + temp.data + " ";
+			temp = temp.next;
+		}
+		return (G) st;
 	}
 }
