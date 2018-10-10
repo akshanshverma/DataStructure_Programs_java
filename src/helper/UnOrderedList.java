@@ -99,10 +99,14 @@ public class UnOrderedList<G> {
 	}
 
 	public void list() {
-		Node temp = head;
-		for (int i = 0; i < count; i++) {
-			System.out.println(temp.data);
-			temp = temp.next;
+		if (head != null ) {
+			Node temp = head;
+			for (int i = 0; i < count; i++) {
+				System.out.println(temp.data);
+				temp = temp.next;
+			}
+		}else {
+			System.out.println("no data");
 		}
 	}
 
@@ -150,8 +154,15 @@ public class UnOrderedList<G> {
 	}
 
 	public G pop() {
+
 		Node temp = head;
 		Node data = tail;
+		if (count == 1) {
+			temp.next = null;
+			head = null;
+			tail = null;
+			return (G) data.data;
+		}
 		for (int i = 1; i < count - 1; i++) {
 			temp = temp.next;
 		}
@@ -203,5 +214,12 @@ public class UnOrderedList<G> {
 			temp = temp.next;
 		}
 		return (G) st;
+	}
+
+	public static void main(String[] args) {
+		UnOrderedList<String> un = new UnOrderedList<String>();
+		un.add("akku");
+		System.out.println(un.pop());
+		un.list();
 	}
 }
