@@ -99,13 +99,13 @@ public class UnOrderedList<G> {
 	}
 
 	public void list() {
-		if (head != null ) {
+		if (head != null) {
 			Node temp = head;
 			for (int i = 0; i < count; i++) {
 				System.out.println(temp.data);
 				temp = temp.next;
 			}
-		}else {
+		} else {
 			System.out.println("no data");
 		}
 	}
@@ -214,12 +214,5 @@ public class UnOrderedList<G> {
 			temp = temp.next;
 		}
 		return (G) st;
-	}
-
-	public static void main(String[] args) {
-		UnOrderedList<String> un = new UnOrderedList<String>();
-		un.add("akku");
-		System.out.println(un.pop());
-		un.list();
 	}
 }

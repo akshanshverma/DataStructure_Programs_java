@@ -49,6 +49,6 @@ public class UnOrderedList1 {
 		System.out.println();
 		
 		u.list();
-		Files.write(Paths.get("/home/pc/Akshansh/akku"),u.getData().getBytes());
+		Files.write(Paths.get("/home/pc/Akshansh/akku.txt"),u.getData().getBytes());
 	}
 }
