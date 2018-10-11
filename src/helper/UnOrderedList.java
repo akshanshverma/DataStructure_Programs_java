@@ -210,7 +210,7 @@ public class UnOrderedList<G> {
 		String st = "";
 		Node temp = head;
 		for (int i = 0; i < count; i++) {
-			st = st + temp.data + " ";
+			st = st + temp.data + "\n";
 			temp = temp.next;
 		}
 		return (G) st;
